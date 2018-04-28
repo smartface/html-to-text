@@ -1,0 +1,27 @@
+{
+  "name": "@smartface/html-to-text",
+  "version": "1.0.0",
+  "description": "html to attributedTexts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartface/html-to-text.git"
+  },
+  "keywords": [
+    "html-to-text",
+    "samrtface",
+    "attributedText"
+  ],
+  "author": "smartface",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartface/html-to-text/issues"
+  },
+  "homepage": "https://github.com/smartface/html-to-text#readme",
+  "dependencies": {
+    "html-parse-stringify": "^1.0.2"
+  }
+}
