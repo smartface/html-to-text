@@ -1,8 +1,9 @@
 const HTML = require('html-parse-stringify')
 
+const util = require("./util");
 var lastTextNode = null;
 
-function getAttributedStrings(htmlSource) {
+function createAttributedStrings(htmlSource) {
   htmlSource = `<span>${htmlSource}</span>`;
   var ast = HTML.parse(htmlSource.replace(/<br>/gmi, "\n"));
   var tree = getParsedTree(ast[0]);
@@ -75,8 +76,8 @@ function getAttributedStringsFromTree(tree, resStrings) {
     tree.style["text-decoration-color"] && (obj.underlineColor = tree.style["text-decoration-color"]);
     obj.string = tree.value;
     Object.keys(obj.font).length === 0 && (delete obj.font);
-    obj = clearProps(obj);
-    if (resStrings.length && isEaualProps(resStrings[resStrings.length - 1], obj)) {
+    obj = util.clearProps(obj);
+    if (resStrings.length && util.isEaualProps(resStrings[resStrings.length - 1], obj)) {
       resStrings[resStrings.length - 1].string += obj.string;
     }
     else {
@@ -89,39 +90,6 @@ function getAttributedStringsFromTree(tree, resStrings) {
   return resStrings;
 }
 
-function isEaualProps(a, b) {
-  return (
-    a.underline === b.underline &&
-    a.backgroundColor === b.backgroundColor &&
-    a.foregroundColor === b.foregroundColor &&
-    isEqualFontProps(a.font, b.font) && (
-      (a.ios && a.ios) ? (a.ios.underlineColor === b.ios.underlineColor) :
-      (!a.ios && !b.ios) ? true : false)
-  );
-}
 
-function isEqualFontProps(a, b) {
-  if (a && b) {
-    return (
-      a.bold === b.bold &&
-      a.italic === b.italic &&
-      a.style === b.style &&
-      a.family === b.family &&
-      a.size === b.size
-    );
-  }
-  else if (!a && !b)
-    return true;
-  return false;
-}
 
-function clearProps(t) {
-  t.string = t.string;
-  delete t.value;
-  t.backgroundColor === "transparent" && (delete t.backgroundColor);
-  t.underlineColor && (t.ios = { underlineColor: t.underlineColor });
-  delete t.underlineColor;
-  return t;
-}
-
-module.exports = getAttributedStrings;
+module.exports = createAttributedStrings;
