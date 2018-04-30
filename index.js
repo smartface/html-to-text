@@ -1,4 +1,4 @@
-const HTML = require('html-parse-stringify')
+const HTML = require('html-parse-stringify');
 
 const util = require("./util");
 var lastTextNode = null;
@@ -24,12 +24,15 @@ function getParsedTree(ast, parent) {
     res.value = ast.content;
     lastTextNode = res;
   }
-  else if (ast.type == "tag" && (ast.name == "br" || ast.name == "div")) {
-    lastTextNode && (lastTextNode.value += "\n");
-  }
-  else if (ast.type == "tag" && ast.name == "u") {
-
-    res.style["text-decoration-line"] = "underline";
+  else if (ast.type === "tag"){
+    if(ast.name === "br" || ast.name === "div")
+      lastTextNode && (lastTextNode.value += "\n");
+    else if(ast.name === "u")
+      res.style["text-decoration-line"] = "underline";
+    else if(ast.name === "b")
+      res.style["font-weight"] = "bold";
+    else if(ast.name === "i")
+      res.style["font-style"] = "italic";
   }
   if (ast.voidElement === false) {
     ast.children.forEach(c => res.children.push(getParsedTree(c, res)));

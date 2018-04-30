@@ -49,4 +49,4 @@ module.exports = {
     isEqualFontProps,
     clearProps,
     isPlainAttributedText
-}
+};
