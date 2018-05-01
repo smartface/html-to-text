@@ -78,11 +78,11 @@ function getAttributedStringsFromTree(tree, resStrings) {
       }
     }
     tree.style["font-size"] && (obj.font.size = Math.floor(parseFloat(tree.style["font-size"])));
-    tree.style["font-weight"] && (obj.font.bold = true);
-    tree.style["font-style"] && (obj.font.italic = true);
+    tree.style["font-weight"] && (obj.font.bold = tree.style["font-weight"] === "bold");
+    tree.style["font-style"] && (obj.font.italic = tree.style["font-style"] == "italic");
     tree.style["background-color"] && (obj.backgroundColor = tree.style["background-color"]);
     tree.style["color"] && (obj.foregroundColor = tree.style["color"]);
-    tree.style["text-decoration-line"] && (obj.underline = true);
+    tree.style["text-decoration-line"] && (obj.underline =  tree.style["text-decoration-line"] === "underline");
     tree.style["text-decoration-color"] && (obj.underlineColor = tree.style["text-decoration-color"]);
     obj.string = tree.value;
     Object.keys(obj.font).length === 0 && (delete obj.font);
