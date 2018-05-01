@@ -26,30 +26,30 @@ You can convert html string to attributed strings for your textview component wi
 
 ## Limitations & Rules
 
-1 If you want to write **newline** character, you can use these tags **\<br\>**, **\<div\>** or use "\n".
-  - "attributed \<br\> string"
-  - "attributed \<div\> string\</div\>"
-  - "attributed \n string"
+1. If you want to write **newline** character, you can use these tags **\<br\>**, **\<div\>** or use "\n".
+    - "attributed \<br\> string"
+    - "attributed \<div\> string\</div\>"
+    - "attributed \n string"
 
-2 You can use following html tags 
-  - **br** ➡️ newline
-  - **div** ➡️ newline and general tag for styling
-  - **span** ➡️ general tag for styling
-  - **font** ➡️ has attribute as color(**color**), size(**font-size**) and face(**font-family**)
-  - **b** ➡️ bold style
-  - **u** ➡️ underline style
-  - **i** ➡️ italic style 
+2. You can use following html tags 
+    - **br** ➡️ newline
+    - **div** ➡️ newline and general tag for styling
+    - **span** ➡️ general tag for styling
+    - **font** ➡️ has attribute as color(**color**), size(**font-size**) and face(**font-family**)
+    - **b** ➡️ bold style
+    - **u** ➡️ underline style
+    - **i** ➡️ italic style 
 
-3 You can only use following css styles
-  - font.family-style ➡️  **font-family** ➡️ "font-family: Nunito-ExtraBold;".
-  - font.italic    ➡️    **font-style** ➡️ "font-style: italic;".
-  - font.size      ➡️    **font-size** ➡️ "font-size: 24px;" (24pt, 24dp)
-  - font.bold       ➡️   **font-weight** ➡️ ️"font-weight: bold;".
-  - foregroundColor  ➡️  **color** ➡️ "color: rgb(127, 125, 127);".
-  - backgroundColor  ➡️  **background-color** ➡️ "background-color: rgb(255, 125, 127);".
-  - underline       ➡️   **text-decoration-line** ➡️ "text-decoration-line: underline;".
-  - ios.underlineColor ➡️ **text-decoration-color** ➡️ "text-decoration-color: rgba(255, 125, 128);".
+3. You can only use following css styles
+    - font.family-style ➡️  **font-family** ➡️ "font-family: Nunito-ExtraBold;".
+    - font.italic    ➡️    **font-style** ➡️ "font-style: italic;".
+    - font.size      ➡️    **font-size** ➡️ "font-size: 24px;" (24pt, 24dp)
+    - font.bold       ➡️   **font-weight** ➡️ ️"font-weight: bold;".
+    - foregroundColor  ➡️  **color** ➡️ "color: rgb(127, 125, 127);".
+    - backgroundColor  ➡️  **background-color** ➡️ "background-color: rgb(255, 125, 127);".
+    - underline       ➡️   **text-decoration-line** ➡️ "text-decoration-line: underline;".
+    - ios.underlineColor ➡️ **text-decoration-color** ➡️ "text-decoration-color: rgba(255, 125, 128);".
 
-4 ⚠️ If you give **font-family** style, this style can overwrite **font-weight** and **font-style**.
-  - font-family: **Nunito-ExtraLightItalic**; ➡️ this overwrite **font-weight** as normal.
+4. ⚠️ If you give **font-family** style, this style can overwrite **font-weight** and **font-style**.
+    - font-family: **Nunito-ExtraLightItalic**; ➡️ this overwrite **font-weight** as normal.
 
