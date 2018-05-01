@@ -18,8 +18,15 @@ function getParsedTree(ast, parent) {
 
   res.style = Object.assign({}, parent && parent.style ? parent.style : {}, ast.attrs && ast.attrs.style ? getParsedStyleObject(ast.attrs.style) : {});
 
-  if (ast.attrs && ast.attrs.color)
-    res.style.color = ast.attrs.color;
+  if (ast.attrs){
+    if(ast.attrs.color)
+      res.style.color = ast.attrs.color;
+    if(ast.attrs.face)
+      res.style["font-family"] = ast.attrs.face;
+    if(ast.attrs.size)
+      res.style["font-size"] = ast.attrs.size;
+  }
+  
   if (ast.type === "text") {
     res.value = ast.content;
     lastTextNode = res;
