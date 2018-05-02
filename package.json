@@ -1,6 +1,6 @@
 {
   "name": "@smartface/html-to-text",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "html to attributedTexts",
   "main": "index.js",
   "scripts": {
