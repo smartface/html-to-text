@@ -11,9 +11,11 @@
     "url": "git+https://github.com/smartface/html-to-text.git"
   },
   "keywords": [
-    "html-to-text",
-    "samrtface",
-    "attributedText"
+    "html",
+    "to",
+    "text",
+    "smartface",
+    "attributed"
   ],
   "author": "smartface",
   "license": "ISC",
@@ -22,6 +24,6 @@
   },
   "homepage": "https://github.com/smartface/html-to-text#readme",
   "dependencies": {
-    "html-parse-stringify": "^1.0.2"
+    "html-parse-stringify": "1.0.2"
   }
 }
