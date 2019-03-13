@@ -5,7 +5,7 @@ function isEaualProps(a, b) {
     a.foregroundColor === b.foregroundColor &&
     a.link === b.link &&
     isEqualFontProps(a.font, b.font) && (
-      (a.ios && b.ios) ? (a.ios.underlineColor === b.ios.underlineColor) :
+      (a.ios && b.ios) ? (a.ios.underlineColor === b.ios.underlineColor) && (a.ios.strikethroughColor === b.ios.strikethroughColor) :
       (!a.ios && !b.ios) ? true : false)
   );
 }
@@ -30,6 +30,7 @@ function clearProps(t) {
   delete t.value;
   t.backgroundColor === "transparent" && (delete t.backgroundColor);
   t.underlineColor && (t.ios = { underlineColor: t.underlineColor });
+  t.strikethroughColor && (t.ios = Object.assign( t.ios || {}, { strikethroughColor : t.strikethroughColor }));
   delete t.underlineColor;
   return t;
 }

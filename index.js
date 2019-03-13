@@ -8,6 +8,7 @@ function createAttributedStrings(htmlSource) {
   var ast = HTML.parse(htmlSource.replace(/<br>/gmi, "\n"));
   var tree = getParsedTree(ast[0]);
   lastTextNode = null;
+  console.log("TEXT SIZE : ", getAttributedStringsFromTree(tree))
   return getAttributedStringsFromTree(tree);
 }
 
@@ -42,6 +43,10 @@ function getParsedTree(ast, parent) {
       res.style["font-weight"] = "bold";
     else if (ast.name === "i")
       res.style["font-style"] = "italic";
+    else if (ast.name === "s" || ast.name === "strike") {
+      res.style.strike = true;
+      ast.attrs.style.color && (res.style.strikethroughColor = ast.attrs.style.color);
+    }
   }
   if (ast.voidElement === false) {
     ast.children.forEach(c => res.children.push(getParsedTree(c, res)));
@@ -83,10 +88,19 @@ function getAttributedStringsFromTree(tree, resStrings) {
     tree.style["font-size"] && (obj.font.size = Math.floor(parseFloat(tree.style["font-size"])));
     tree.style["font-weight"] && (obj.font.bold = tree.style["font-weight"] === "bold");
     tree.style["font-style"] && (obj.font.italic = tree.style["font-style"] == "italic");
+
     tree.style["background-color"] && (obj.backgroundColor = tree.style["background-color"]);
     tree.style["color"] && (obj.foregroundColor = tree.style["color"]);
-    tree.style["text-decoration-line"] && (obj.underline = tree.style["text-decoration-line"] === "underline");
+
+    tree.style["text-decoration-line"] && (obj.underline = tree.style["text-decoration-line"].indexOf("underline") !== -1);
     tree.style["text-decoration-color"] && (obj.underlineColor = tree.style["text-decoration-color"]);
+
+    if (tree.style.strike || (tree.style["text-decoration-line"] && tree.style["text-decoration-line"].indexOf("line-through") !== -1)) {
+      obj.strikethrough = true;
+      tree.style["text-decoration-color"] && (obj.strikethroughColor = tree.style["text-decoration-color"]);
+      tree.style.strikethroughColor && (obj.strikethroughColor = tree.style.strikethroughColor);
+    }
+
     obj.string = tree.value;
     Object.keys(obj.font).length === 0 && (delete obj.font);
     util.updateUnderlineColor(obj);
@@ -101,6 +115,7 @@ function getAttributedStringsFromTree(tree, resStrings) {
   tree.children.forEach(t => {
     getAttributedStringsFromTree(t, resStrings);
   });
+  console.log(resStrings);
   return resStrings;
 }
 
