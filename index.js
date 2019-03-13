@@ -8,7 +8,6 @@ function createAttributedStrings(htmlSource) {
   var ast = HTML.parse(htmlSource.replace(/<br>/gmi, "\n"));
   var tree = getParsedTree(ast[0]);
   lastTextNode = null;
-  console.log("TEXT SIZE : ", getAttributedStringsFromTree(tree))
   return getAttributedStringsFromTree(tree);
 }
 
@@ -92,7 +91,7 @@ function getAttributedStringsFromTree(tree, resStrings) {
     tree.style["background-color"] && (obj.backgroundColor = tree.style["background-color"]);
     tree.style["color"] && (obj.foregroundColor = tree.style["color"]);
 
-    tree.style["text-decoration-line"] && (obj.underline = tree.style["text-decoration-line"].indexOf("underline") !== -1);
+    tree.style["text-decoration-line"] && tree.style["text-decoration-line"].indexOf("underline") !== -1 && (obj.underline =true);
     tree.style["text-decoration-color"] && (obj.underlineColor = tree.style["text-decoration-color"]);
 
     if (tree.style.strike || (tree.style["text-decoration-line"] && tree.style["text-decoration-line"].indexOf("line-through") !== -1)) {
@@ -103,7 +102,7 @@ function getAttributedStringsFromTree(tree, resStrings) {
 
     obj.string = tree.value;
     Object.keys(obj.font).length === 0 && (delete obj.font);
-    util.updateUnderlineColor(obj);
+    util.updateTextDecorationColors(obj);
     obj = util.clearProps(obj);
     if (resStrings.length && util.isEaualProps(resStrings[resStrings.length - 1], obj)) {
       resStrings[resStrings.length - 1].string += obj.string;
@@ -115,7 +114,7 @@ function getAttributedStringsFromTree(tree, resStrings) {
   tree.children.forEach(t => {
     getAttributedStringsFromTree(t, resStrings);
   });
-  console.log(resStrings);
+ 
   return resStrings;
 }
 

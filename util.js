@@ -6,7 +6,7 @@ function isEaualProps(a, b) {
     a.link === b.link &&
     isEqualFontProps(a.font, b.font) && (
       (a.ios && b.ios) ? (a.ios.underlineColor === b.ios.underlineColor) && (a.ios.strikethroughColor === b.ios.strikethroughColor) :
-      (!a.ios && !b.ios) ? true : false)
+      (!a.ios && !b.ios))
   );
 }
 
@@ -26,18 +26,21 @@ function isEqualFontProps(a, b) {
 }
 
 function clearProps(t) {
-  t.string = t.string;
   delete t.value;
   t.backgroundColor === "transparent" && (delete t.backgroundColor);
   t.underlineColor && (t.ios = { underlineColor: t.underlineColor });
   t.strikethroughColor && (t.ios = Object.assign( t.ios || {}, { strikethroughColor : t.strikethroughColor }));
   delete t.underlineColor;
+  delete t.strikethroughColor;
   return t;
 }
 
-function updateUnderlineColor(t){
+function updateTextDecorationColors(t){
   if(t.underline && !t.underlineColor){
     t.underlineColor = t.foregroundColor || "#000000";
+  }
+  if(t.strikethrough && !t.strikethroughColor){
+    t.strikethroughColor = t.foregroundColor || "#000000";
   }
 }
 
@@ -57,5 +60,5 @@ module.exports = {
     isEqualFontProps,
     clearProps,
     isPlainAttributedText,
-    updateUnderlineColor
+    updateTextDecorationColors
 };

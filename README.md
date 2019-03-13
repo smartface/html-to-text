@@ -19,7 +19,7 @@ You can convert html string to attributed strings for your textview component wi
     const propFactory = require("@smartface/contx/lib/smartface/sfCorePropFactory").default;
     
     var textView = new TextView();
-    var htmlSource = "<span style=\"font-size: 24px; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\"><span style=\"font-family: Nunito-LightItalic; font-size: 24px; background-color: transparent; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\">Your </span><font face=\"ios-Default-Bold\" style=\"font-size: 24px; font-family: ios-Default-Regular; background-color: transparent; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\">attributed </font><span style=\"text-decoration-line: underline; color: rgb(139, 87, 42); font-size: 24px; font-family: ios-Default-Regular; background-color: transparent; text-decoration-color: rgb(0, 0, 0);\">Stri<span style=\"color: rgb(139, 87, 42); text-decoration-line: underline; text-decoration-color: rgb(0, 0, 0); font-size: 24px; font-family: ios-Default-Regular; background-color: transparent;\">ngs</span></span></span><div><span style=\"font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; text-decoration-color: rgb(0, 0, 0); font-size: 24px; font-family: ios-Default-Regular; background-color: rgb(189, 16, 224);\">second</span></span></span></div><div><span style=\"font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; text-decoration-color: rgb(0, 0, 0); font-size: 16px; font-family: ios-Default-Regular; background-color: rgb(189, 16, 224); color: rgb(248, 231, 28);\">Third</span></span></span></div>";
+    var htmlSource = "<span style=\"font-size: 24px; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\"><span style=\"font-family: Nunito-LightItalic; font-size: 24px; background-color: transparent; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\">Your </span><font face=\"ios-Default-Bold\" style=\"font-size: 24px; font-family: ios-Default-Regular; background-color: transparent; color: rgb(0, 0, 0); text-decoration-color: rgb(0, 0, 0);\">attributed </font><span style=\"text-decoration-line: underline; color: rgb(139, 87, 42); font-size: 24px; font-family: ios-Default-Regular; background-color: transparent; text-decoration-color: rgb(0, 0, 0);\">Stri<span style=\"color: rgb(139, 87, 42); text-decoration-line: underline ; text-decoration-color: rgb(0, 0, 0); font-size: 24px; font-family: ios-Default-Regular; background-color: transparent;\">ngs</span></span></span><div><span style=\"font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; text-decoration-color: rgb(0, 0, 0); font-size: 24px; font-family: ios-Default-Regular; background-color: rgb(189, 16, 224);\">second</span></span></span></div><div><span style=\"font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; font-size: 16px; font-family: ios-Default-Regular; text-decoration-color: rgb(0, 0, 0);\"><span style=\"text-decoration-line: underline; text-decoration-color: rgb(0, 0, 0); font-size: 16px; font-family: ios-Default-Regular; background-color: rgb(189, 16, 224); color: rgb(248, 231, 28);\">Third</span></span></span></div>";
     var attributedStrings = createAttributedStrings(htmlSource);
     textView.attributedText = attributedStrings.map(s => new AttributedString(propFactory(s)));
 ```
@@ -33,26 +33,30 @@ You can convert html string to attributed strings for your textview component wi
 
 
 2. You can use following html tags 
-    - **br**   → newline
-    - **div**  → newline and general tag for styling
-    - **span** → general tag for styling
-    - **font** → has attribute as color(**color**), size(**font-size**) and face(**font-family**)
-    - **b**    → bold style
-    - **u**    → underline style
-    - **i**    → italic style 
-    - **a**    → has attribute **href** for link.
+    - **br**     → newline
+    - **div**    → newline and general tag for styling
+    - **span**   → general tag for styling
+    - **font**   → has attribute as color(**color**), size(**font-size**) and face(**font-family**)
+    - **b**      → bold style
+    - **u**      → underline style
+    - **i**      → italic style 
+    - **a**      → has attribute **href** for link.
+    - **s**      → line-through
+    - **strike** → line-through
 
 
 3. You can only use following css styles
-    - font.family-style  → **font-family** → ```"font-family: Nunito-ExtraBold;"```
-    - font.italic        → **font-style** → ```"font-style: italic;"```
-    - font.size          → **font-size** → ```"font-size: 24px;" (24pt, 24dp)```
-    - font.bold          → **font-weight** → ```"font-weight: bold;"```
-    - foregroundColor    → **color** → ```"color: rgb(127, 125, 127);"```
-    - backgroundColor    → **background-color** → ```"background-color: rgb(255, 125, 127);"```
-    - underline          → **text-decoration-line** → ```"text-decoration-line: underline;"```
-    - link               → **href** → ```"click <a href=\"https://smartface.io\"> here </a> "```
-    - ios.underlineColor → **text-decoration-color** → ```"text-decoration-color: rgba(255, 125, 128);"```
+    - font.family-style      → **font-family** → ```"font-family: Nunito-ExtraBold;"```
+    - font.italic            → **font-style** → ```"font-style: italic;"```
+    - font.size              → **font-size** → ```"font-size: 24px;" (24pt, 24dp)```
+    - font.bold              → **font-weight** → ```"font-weight: bold;"```
+    - foregroundColor        → **color** → ```"color: rgb(127, 125, 127);"```
+    - backgroundColor        → **background-color** → ```"background-color: rgb(255, 125, 127);"```
+    - underline              → **text-decoration-line** → ```"text-decoration-line: underline;"```
+    - strikethrough          → **text-decoration-line** → ```"text-decoration-line: line-through;"```
+    - link                   → **href** → ```"click <a href=\"https://smartface.io\"> here </a> "```
+    - ios.underlineColor     → **text-decoration-color** → ```"text-decoration-color: rgba(255, 125, 128);"```
+    - ios.strikethroughColor → **text-decoration-color** → ```"text-decoration-color: rgba(24, 126, 168);"```
 
 
 4. ⚠️ If you give **font-family** style, this style can overwrite **font-weight** and **font-style**.
