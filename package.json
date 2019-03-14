@@ -4,7 +4,7 @@
   "description": "html to attributedTexts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "homepage": "https://github.com/smartface/html-to-text#readme",
   "dependencies": {
     "html-parse-stringify": "1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
   }
 }

@@ -1,4 +1,4 @@
-function isEaualProps(a, b) {
+function isEqualProps(a, b) {
   return (
     a.underline === b.underline &&
     a.backgroundColor === b.backgroundColor &&
@@ -28,7 +28,7 @@ function isEqualFontProps(a, b) {
 function clearProps(t) {
   delete t.value;
   t.backgroundColor === "transparent" && (delete t.backgroundColor);
-  t.underlineColor && (t.ios = { underlineColor: t.underlineColor });
+  t.underline && t.underlineColor && (t.ios = { underlineColor: t.underlineColor });
   t.strikethroughColor && (t.ios = Object.assign( t.ios || {}, { strikethroughColor : t.strikethroughColor }));
   delete t.underlineColor;
   delete t.strikethroughColor;
@@ -56,7 +56,7 @@ function isPlainAttributedText(t){
 }
 
 module.exports = {
-    isEaualProps,
+    isEqualProps,
     isEqualFontProps,
     clearProps,
     isPlainAttributedText,

@@ -8,7 +8,7 @@ function createAttributedStrings(htmlSource) {
   var ast = HTML.parse(htmlSource.replace(/<br>/gmi, "\n"));
   var tree = getParsedTree(ast[0]);
   lastTextNode = null;
-  return getAttributedStringsFromTree(tree);
+ return getAttributedStringsFromTree(tree);
 }
 
 function getParsedTree(ast, parent) {
@@ -104,7 +104,7 @@ function getAttributedStringsFromTree(tree, resStrings) {
     Object.keys(obj.font).length === 0 && (delete obj.font);
     util.updateTextDecorationColors(obj);
     obj = util.clearProps(obj);
-    if (resStrings.length && util.isEaualProps(resStrings[resStrings.length - 1], obj)) {
+    if (resStrings.length && util.isEqualProps(resStrings[resStrings.length - 1], obj)) {
       resStrings[resStrings.length - 1].string += obj.string;
     }
     else {
