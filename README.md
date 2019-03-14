@@ -1,6 +1,7 @@
 [![Twitter: @Smartface_io](https://img.shields.io/badge/contact-@Smartface_io-blue.svg?style=flat)](https://twitter.com/smartface_io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/smartface/html-to-text/blob/master/LICENSE)
 ![npm version](https://img.shields.io/npm/v/@smartface/html-to-text.svg?style=flat)
+[![Build Status](https://travis-ci.org/smartface/html-to-text.svg?branch=master)](https://travis-ci.org/smartface/html-to-text)
 
 # html-to-text
 
