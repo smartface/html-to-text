@@ -3,6 +3,9 @@
 ![npm version](https://img.shields.io/npm/v/@smartface/html-to-text.svg?style=flat)
 [![Build Status](https://travis-ci.org/smartface/html-to-text.svg?branch=master)](https://travis-ci.org/smartface/html-to-text)
 
+# ⛔️ DEPRECATED
+This repository is only used internally via smartface services and will not receive new versions anymore. To use the conversion on Smartface Projects, refer to [this link](https://github.com/smartface/sf-extension-utils/blob/master/doc/html-to-text.md)
+
 # html-to-text
 
 You can convert html string to attributed strings for your textview component with this module
